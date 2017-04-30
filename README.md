@@ -2,7 +2,7 @@
 O Gugaiô é um framework PHP, desenvolvido com Silex e outros componentes, o mesmo já tem disponivel o ORM Eloquent, assim facilitando a manipulado de dados.
 O Gugaiô foi feito para facilitar o desenvolvimento de APIs, pois o mesmo já vem com autenticação JWT, assim aumentando a segunça a cada requisição.
 
-##Iniciando
+## Iniciando
 ```
 git clone https://github.com/jacsonsantos/gugaio.git
 ```
@@ -30,7 +30,7 @@ TOKEN:
     EXPIRES: 3600
 ```
 Configuração para gerar token. Por padrão já vem configurado, faltando apenas sua chave de segurança (assinatura) em *SECRET*.
-<br>Para gerar token utilizamos a seguinte lib: *lcobucci/jwt* na versão 3.2. para mais informações acesse [lcobucci/jwt](https://github.com/lcobucci/jwt).
+<br>Para gerar token utilizamos a seguinte lib: *lcobucci/jwt* na versão 3.2. Para mais informações acesse [lcobucci/jwt](https://github.com/lcobucci/jwt).
 <br>Para gerar token use o seguinte provider:
 ```php
 //Gerar Token
@@ -40,3 +40,31 @@ $token = $app['jwt']->generateToken();
 //Valida Token
 $app['jwt']->validateToken($token);
 ```
+Para trabalhar com envio e recebimento de e-mails, informe as credenciais do mesmo.
+```
+USER:
+    USERNAME: ''
+    PASSWORD: ''
+```
+Para envio de email foi utilizado a seguinte lib: *swiftmailer/swiftmailer* na versão 5.4. Para mais informações acesse [swiftmailer/swiftmailer](http://swiftmailer.org/docs/introduction.html).
+<br>Como enviar e-mails:
+```php
+$message = \Swift_Message::newInstance();
+$app['mailer']->send($message);
+```
+Saiba mais [aqui](http://swiftmailer.org/docs/introduction.html).
+
+Para receber de email foi utilizado a seguinte lib: *ddeboer/imap* na versão 0.5.2. Para mais informações acesse [ddeboer/imap](https://github.com/ddeboer/imap).
+É necessario baixar o ddeboer/imap, para isso use:
+```
+composer require ddeboer/imap
+```
+Depois descomente o registro em *public/index.php* na linha 36.
+```
+//    $app->register(new JSantos\Provider\IMAPServiceProvider());
+```
+Como usar:
+```php
+$mailbox = $this->app['imap.connection']->getMailbox('INBOX');
+```
+Saiba mais [aqui](https://github.com/ddeboer/imap).

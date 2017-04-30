@@ -33,6 +33,7 @@ try {
         'encryption' => CONFIG['MAIL']['ENCRYPTION'],
         'auth_mode' => CONFIG['MAIL']['AUTH_MODE'],
     ];
+//    $app->register(new JSantos\Provider\IMAPServiceProvider());
     $app->register(new JDesrosiers\Silex\Provider\CorsServiceProvider(), [
         'cors.allowOrigin' => '*',
         'cors.allowMethods' => 'POST,PUT,DELETE, OPTIONS',
