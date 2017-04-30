@@ -2,6 +2,20 @@
 O Gugaiô é um framework PHP, desenvolvido com Silex e outros componentes, o mesmo já tem disponivel o ORM Eloquent, assim facilitando a manipulado de dados.
 O Gugaiô foi feito para facilitar o desenvolvimento de APIs, pois o mesmo já vem com autenticação JWT, assim aumentando a segunça a cada requisição.
 
+## Sobre
+O Gugaiô foi desenvolvido com [Silex](https://silex.sensiolabs.org) na versão 2.0. Então você pode trabalhar tranquilamento com todas funcionalidades do mesmo no Gugaiô.
+O ORM utilizado no Gugaiô é o [Eloquent](https://github.com/illuminate/database), assim facilitando a manipular dados igual ao [Laravel](https://laravel.com).
+
+## Sumario
+* Iniciando
+* Configurando
+* Token
+* Email
+* Banco de Dados
+* Rotas
+* Comandos gugaio
+* Registrar Controller
+
 ## Iniciando
 ```
 git clone https://github.com/jacsonsantos/gugaio.git
@@ -21,6 +35,8 @@ O campo *DEBUG* habilita o Debug da aplicação
 VERSION: v1
 ```
 Versão da API
+
+## Token
 ```
 TOKEN:
     SECRET: 'yourSecret'
@@ -40,6 +56,8 @@ $token = $app['jwt']->generateToken();
 //Valida Token
 $app['jwt']->validateToken($token);
 ```
+
+## Email
 Para trabalhar com envio e recebimento de e-mails, informe as credenciais do mesmo.
 ```
 USER:
@@ -65,6 +83,26 @@ Depois descomente o registro em *public/index.php* na linha 36.
 ```
 Como usar:
 ```php
-$mailbox = $this->app['imap.connection']->getMailbox('INBOX');
+$mailbox = $app['imap.connection']->getMailbox('INBOX');
 ```
 Saiba mais [aqui](https://github.com/ddeboer/imap).
+
+## Banco de Dados
+Informe os dados necessarios de seus banco.
+```
+DB:
+    DRIVE: 'mysql'
+    HOST: 127.0.0.1
+    DBNAME: ''
+    PORT: 3306
+    USERNAME: ''
+    PASSWORD: ''
+    CHARSET: 'utf8'
+    COLLATION: 'utf8_unicode_ci'
+    PREFIX: ''
+```
+Como usar o provider de conexão.
+```php
+$prepare = $app['connection']->prepare($sql);
+$prepare->execute();
+```
