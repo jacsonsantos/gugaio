@@ -1,0 +1,37 @@
+DEBUG: true
+
+VERSION: 'v1'
+
+TOKEN:
+    SECRET: 'yourSecret'
+    ISS: ''
+    JTI: '4f1g23a12aa'
+    REMOTE: 'HMAC'
+    EXPIRES: 3600
+
+IMAP:
+    HOSTNAME: 'imap.gmail.com'
+    PORT: 993
+    FLAGS: '/imap/ssl/validate-cert'
+    PARAMETERS: {}
+
+MAIL:
+    HOSTSMTP: 'smtp.gmail.com'
+    PORT: 465
+    ENCRYPTION: ssl
+    AUTH_MODE: null
+
+USER:
+    USERNAME: ''
+    PASSWORD: ''
+
+DB:
+    DRIVE: 'mysql'
+    HOST: 127.0.0.1
+    DBNAME: ''
+    PORT: 3306
+    USERNAME: ''
+    PASSWORD: ''
+    CHARSET: 'utf8'
+    COLLATION: 'utf8_unicode_ci'
+    PREFIX: ''
