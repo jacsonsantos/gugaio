@@ -1,11 +1,11 @@
 <?php
 namespace JSantos\Command;
 
-trait ModelTrait
+trait CommandTrait
 {
-    protected $path = __DIR__.'/../Model/';
+    protected $path = '';
 
-    protected function filterNewModel(string $model)
+    protected function manipulation(string $model) : string
     {
         $model = str_replace("\\",'/',$model);
         $model = explode('/',$model);
@@ -14,7 +14,7 @@ trait ModelTrait
         }
         return implode('/',$model);
     }
-    protected function getNameModel(string $model)
+    protected function getNameFile(string $model) : string
     {
         return (strpos($model,'/')) ? substr(strrchr($model, '/'), 1) : $model;
     }
