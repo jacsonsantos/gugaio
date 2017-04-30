@@ -106,3 +106,80 @@ Como usar o provider de conexão.
 $prepare = $app['connection']->prepare($sql);
 $prepare->execute();
 ```
+Trabalhando com Model usando Eloquent ORM.<br>
+Para criar um novo Model use:
+```
+php gugaio make:model MyNewModel
+```
+Saiba mais [aqui](https://laravel.com/docs/5.4/eloquent#eloquent-model-conventions).
+
+## Rotas
+Todas as rotas estão centralizadas no diretorio *src/Router*.<br>
+No diretorio Router possui dois arquivos, *Router* e *RouterAuth*.<br>
+
+#### Router
+O arquivo *Router.php* fica todas as rotas sem validação de Token.<br>
+**Como adicionar uma nova Rota** <br>
+*Exemplo 01*. http://seuurl.com/v1/users
+```php
+$router->get('/users', function () {
+        return JSantos\Model\User::all();
+    });
+```
+*Exemplo 02*.http://seuurl.com/v1/users
+```php
+$router->get('/users', 'user:index');
+```
+*Exemplo 03*.http://seuurl.com/users/{id}
+```php
+$app->mount('/users', function ($users) use ($app) {
+    //exe01
+    $users->get('/{id}', function ($id) {
+        return JSantos\Model\User::find($id);
+    });
+    //exe02
+    $users->get('/{id}', 'user:index');
+});
+```
+
+#### RouterAuth
+O arquivo *RouterAuth.php* fica todas as rotas com validação de Token por requisição.<br>
+**Como adicionar uma nova Rota** <br>
+*Exemplo 01*.<br>
+GET - *http://seuurl.com/v1/auth/users*
+```php
+$auth->get('/users', function () {
+        return JSantos\Model\User::all();
+    });
+```
+*Exemplo 02*.<br>
+POST - *http://seuurl.com/v1/auth/users*
+```php
+$auth->post('/users', 'user:create');
+```
+*Exemplo 03*.<br>
+GET - *http://seuurl.com/product/{slug}*<br>
+POST - *http://seuurl.com/product/*
+```php
+$app->mount('/product', function ($product) use ($app) {
+    //exe01-router
+    $product->get('/{slug}', function ($slug) {
+        return JSantos\Model\Product::find($slug);
+    });
+    //exe02-router
+    $product->post('/', 'product:create');
+    
+    $product->before(function (Request $request) use ($app) {
+        $token = $request->headers->get('Authorization');
+        $token = trim(str_replace('Bearer ', '', $token));
+    
+        $jwt = $app['jwt'];
+        $jwt->setApplication($app);
+    
+        if (!$jwt->validateToken($token)) {
+            $response = new JsonResponse(['token invalid'],401);
+            return $response;
+        }
+    });
+});
+```
