@@ -8,7 +8,13 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class CreateModelCommand extends Command
 {
-    use ModelTrait;
+    use CommandTrait;
+
+    public function __construct($name = null)
+    {
+        parent::__construct($name);
+        $this->path = __DIR__.'/../Model/';
+    }
 
     protected function configure()
     {
@@ -24,8 +30,8 @@ class CreateModelCommand extends Command
         $msg = "Model is exist in project";
 
         $model = $input->getArgument('name');
-        $model = $this->filterNewModel($model);
-        $modelName = $this->getNameModel($model);
+        $model = $this->manipulation($model);
+        $modelName = $this->getNameFile($model);
 
         $content = "<?php\nnamespace JSantos\\Model;\n\nuse Illuminate\\Database\\Eloquent\\Model;\n\nclass $modelName extends Model\n{\n\n}";
 
