@@ -1,0 +1,21 @@
+{
+    "require": {
+        "silex/silex": "^2.0",
+        "symfony/yaml": "^3.2",
+        "jms/serializer": "^1.6",
+        "swiftmailer/swiftmailer": "^5.4",
+        "lcobucci/jwt": "^3.2",
+        "jdesrosiers/silex-cors-provider": "^1.4",
+        "illuminate/database": "^5.4",
+        "illuminate/events": "^5.4",
+        "symfony/console": "^3.2"
+    },
+    "autoload":{
+        "psr-4":{
+            "JSantos\\":"src/"
+        }
+    },
+    "config": {
+        "bin-dir": "bin/"
+    }
+}
