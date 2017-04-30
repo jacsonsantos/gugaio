@@ -3,8 +3,8 @@ O Gugaiô é um framework PHP, desenvolvido com Silex e outros componentes, o me
 O Gugaiô foi feito para facilitar o desenvolvimento de APIs, pois o mesmo já vem com autenticação JWT, assim aumentando a segunça a cada requisição.
 
 ## Sobre
-O Gugaiô foi desenvolvido com [Silex](https://silex.sensiolabs.org) na versão 2.0. Então você pode trabalhar tranquilamento com todas funcionalidades do mesmo no Gugaiô.
-O ORM utilizado no Gugaiô é o [Eloquent](https://github.com/illuminate/database), assim facilitando a manipular dados igual ao [Laravel](https://laravel.com).
+O Gugaiô foi desenvolvido com [Silex](https://silex.sensiolabs.org) na versão 2.0. Então você pode trabalhar tranquilamente com todas funcionalidades do mesmo no Gugaiô.
+O ORM utilizado no Gugaiô é o [Eloquent](https://github.com/illuminate/database), assim facilitando a manipulação de dados igual ao [Laravel](https://laravel.com).
 
 ## Sumario
 * Iniciando
