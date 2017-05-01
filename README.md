@@ -13,8 +13,10 @@ O ORM utilizado no Gugaiô é o [Eloquent](https://github.com/illuminate/databas
 * Email
 * Banco de Dados
 * Rotas
+* Model
+* Controller
+* Views
 * Comandos gugaio
-* Registrar Controller
 
 ## Iniciando
 ```
@@ -65,6 +67,14 @@ USER:
     PASSWORD: ''
 ```
 Para envio de email foi utilizado a seguinte lib: *swiftmailer/swiftmailer* na versão 5.4. Para mais informações acesse [swiftmailer/swiftmailer](http://swiftmailer.org/docs/introduction.html).
+<br>Registrando Serviço de Email:
+```
+php gugaio register:mailer
+```
+Instale o SwiftMailer antes de usar o serviço *mailer*
+```
+composer require swiftmailer/swiftmailer
+```
 <br>Como enviar e-mails:
 ```php
 $message = \Swift_Message::newInstance();
@@ -77,9 +87,9 @@ Para receber de email foi utilizado a seguinte lib: *ddeboer/imap* na versão 0.
 ```
 composer require ddeboer/imap
 ```
-Depois descomente o registro em *public/index.php* na linha 36.
+Depois registre:
 ```
-//    $app->register(new JSantos\Provider\IMAPServiceProvider());
+php gugaio register:imap
 ```
 Como usar:
 ```php
