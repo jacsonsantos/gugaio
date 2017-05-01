@@ -169,6 +169,11 @@ abstract class Repository
         return $prepare->fetchAll(\PDO::FETCH_ASSOC);
     }
 
+    /**
+     * @param array $fields
+     * @param int $id
+     * @return array
+     */
     public function runJoin(array $fields = ['*'], int $id) : array
     {
         $sql = 'SELECT '.implode(',', $fields).' FROM '. $this->table;
@@ -180,12 +185,20 @@ abstract class Repository
         return self::run($sql);
     }
 
+    /**
+     * @param string $table
+     * @param array $expression
+     * @return Repository
+     */
     public function setJoin(string $table, array $expression) : self
     {
         array_push($this->join, [$table => $expression]);
         return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getJoin() : string
     {
         $sql = '';

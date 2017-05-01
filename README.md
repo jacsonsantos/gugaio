@@ -193,3 +193,17 @@ $app->mount('/product', function ($product) use ($app) {
     });
 });
 ```
+
+## Model
+Para Trabalhar com Model no Gugaiô é muito facil, o mesmo possui Eloquent ORM.<br>
+Para criar um novo Model use:
+```
+php gugaio make:model MyNewModel
+```
+Saiba mais [aqui](https://laravel.com/docs/5.4/eloquent#eloquent-model-conventions).
+<br>
+Caso não goste de usar ORM, você pode usar o serviço *$app['connection']*, onde o mesmo te entrega uma instancia PDO.<br>
+Você tambem pode fazer um *CRUD* facilmente extendendo a classe *Repository* ou usando:
+```
+php gugaio make:repo MyRepository
+```
