@@ -69,7 +69,7 @@ USER:
 Para envio de email foi utilizado a seguinte lib: *swiftmailer/swiftmailer* na versão 5.4. Para mais informações acesse [swiftmailer/swiftmailer](http://swiftmailer.org/docs/introduction.html).
 <br>Registrando Serviço de Email:
 ```
-php gugaio resgister:mailer
+php gugaio register:mailer
 ```
 Instale o SwiftMailer antes de usar o serviço *mailer*
 ```
