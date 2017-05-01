@@ -1,15 +1,22 @@
 <?php
 require __DIR__.'/../vendor/autoload.php';
 
+use Symfony\Component\Console\Application;
 use JSantos\Command\CreateModelCommand;
 use JSantos\Command\CreateConfigCommand;
 use JSantos\Command\CreateControllerCommand;
-use Symfony\Component\Console\Application;
+use JSantos\Command\ViewsCommand;
+use JSantos\Command\RegisterImapCommand;
+use JSantos\Command\RegisterMailCommand;
 
 $console = new Application();
 //NEW COMMAND
 $console->add(new CreateModelCommand());
 $console->add(new CreateConfigCommand());
 $console->add(new CreateControllerCommand());
+$console->add(new ViewsCommand());
+$console->add(new RegisterImapCommand());
+$console->add(new RegisterMailCommand());
 
+//The End Command
 $console->run();

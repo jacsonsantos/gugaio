@@ -1,9 +1,23 @@
 {
+    "name": "jacsonsantos/gugaio",
+    "description": "The Framework PHP.",
+    "license": "MIT",
+    "homepage": "http://jsmaker.com.br",
+    "support": {
+        "issues": "",
+        "source": "https://github.com/jacsonsantos/gugaio"
+    },
+    "keywords": ["gugaio", "framework", "api", "orm", "jwt"],
+    "authors": [
+        {
+            "name": "Jacson Santos",
+            "email": "jacsonk47@gmail.com"
+        }
+    ],
     "require": {
         "silex/silex": "^2.0",
         "symfony/yaml": "^3.2",
         "jms/serializer": "^1.6",
-        "swiftmailer/swiftmailer": "^5.4",
         "lcobucci/jwt": "^3.2",
         "jdesrosiers/silex-cors-provider": "^1.4",
         "illuminate/database": "^5.4",
@@ -17,5 +31,6 @@
     },
     "config": {
         "bin-dir": "bin/"
-    }
+    },
+    "minimum-stability": "dev"
 }
