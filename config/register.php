@@ -10,3 +10,4 @@ $app->register(new JSantos\Provider\ControllerServiceProvider());
 $app->register(new JSantos\Provider\JWTServiceProvider());
 $app->register(new JSantos\Provider\ConnectionServiceProvider());
 $app->register(new JSantos\Provider\DataBaseServiceProvider());
+//New Register

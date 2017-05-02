@@ -48,7 +48,7 @@ abstract class Repository
      * @param array $fields
      * @return array
      */
-    public function getAll(array $fields = ['*']) : array
+    public function read(array $fields = ['*']) : array
     {
         $fields = implode(',',$fields);
         $sql = 'SELECT '.$fields.' FROM '.$this->table;
@@ -73,7 +73,7 @@ abstract class Repository
      * @param array $data
      * @return bool|int
      */
-    public function insert(array $data)
+    public function create(array $data)
     {
         $columns = array_keys($data);
         $fields = implode(',',$columns);
