@@ -156,42 +156,19 @@ $app->mount('/users', function ($users) use ($app) {
 O arquivo *RouterAuth.php* fica todas as rotas com validação de Token por requisição.<br>
 **Como adicionar uma nova Rota** <br>
 *Exemplo 01*.<br>
-GET - *http://seuurl.com/v1/auth/users*
+GET - *http://seuurl.com/v1/api/users*
 ```php
 $auth->get('/users', function () {
         return JSantos\Model\User::all();
     });
 ```
 *Exemplo 02*.<br>
-POST - *http://seuurl.com/v1/auth/users*
+POST - *http://seuurl.com/v1/api/users*
 ```php
+$auth->get('/users', 'user:read');
 $auth->post('/users', 'user:create');
-```
-*Exemplo 03*.<br>
-GET - *http://seuurl.com/product/{slug}*<br>
-POST - *http://seuurl.com/product/*
-```php
-$app->mount('/product', function ($product) use ($app) {
-    //exe01-router
-    $product->get('/{slug}', function ($slug) {
-        return JSantos\Model\Product::find($slug);
-    });
-    //exe02-router
-    $product->post('/', 'product:create');
-    
-    $product->before(function (Request $request) use ($app) {
-        $token = $request->headers->get('Authorization');
-        $token = trim(str_replace('Bearer ', '', $token));
-    
-        $jwt = $app['jwt'];
-        $jwt->setApplication($app);
-    
-        if (!$jwt->validateToken($token)) {
-            $response = new JsonResponse(['token invalid'],401);
-            return $response;
-        }
-    });
-});
+$auth->put('/users', 'user:update');
+$auth->delete('/users', 'user:delete');
 ```
 
 ## Model
@@ -207,3 +184,57 @@ Você tambem pode fazer um *CRUD* facilmente extendendo a classe *Repository* ou
 ```
 php gugaio make:repo MyRepository
 ```
+## Controller
+Para criar um Controller use:
+```
+php gugaio make:controller MyController
+```
+Resultado:<br>
+*src/Controller/MyController.php*
+```php
+<?php
+namespace JSantos\Controller;
+ 
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
+ 
+class MyController extends Controller
+{
+    
+}
+```
+Você pode trabalhar com o Controller como um serviço, mas primeiro deve registrar o mesmo.<br>
+**Registrando Controller como Serviço**
+ ```
+ php gugaio register:controller MyController --name=my
+ ```
+ Caso não informe a opção *--name*, o serviço terá o mesmo nome do Controller em letra minuscula.
+ 
+ ## Views
+ Você pode tambem trabalhar com views no Gugaio, por padrão está configurado para trabalhar com [Twig](https://twig.sensiolabs.org/).
+ Como trabalhar com views no Gugaiô:
+ ```
+ php gugaio make:view
+ ```
+ Cria o diretorio *Views* na pasta *src*. Agora use:
+ ```
+ php gugaio register:twig
+ ```
+ Depois de registrar o serviço do Twig, será necessario baixar o mesmo.
+ ```
+ composer require twig/twig
+ ```
+ Pronto! Você já pode começar a criar suas views, saiba mais [aqui](https://twig.sensiolabs.org/doc/2.x/).
+ 
+ ## Comandos gugaio
+ #### make
+ * **php gugaio make:config** - Cria o arquivo principal de configuração de sua aplicação.
+ * **php gugaio make:controller** - Cria um novo *Controller*.
+ * **php gugaio make:model** - Cria um novo *Model*.
+ * **php gugaio make:repo** - Cria um novo *File Repository* com *CRUD* pronto.
+ * **php gugaio make:view** - Cria o diretorio *Views* dentro de *src* para trabalhar com views do Twig.
+ #### register
+ * **php gugaio register:controller** - Registra seu Controller como serviço, use *--name* para definir o nome do serviço.
+ * **php gugaio register:imap** - Registra o serviço para recebimento de e-mails.
+ * **php gugaio register:mailer** - Registra o serviço para envio de e-mails.
+ * **php gugaio register:twig** - Registra o serviço do Twig para trabalhar com views.

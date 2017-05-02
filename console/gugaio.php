@@ -9,6 +9,8 @@ use JSantos\Command\ViewsCommand;
 use JSantos\Command\RegisterImapCommand;
 use JSantos\Command\RegisterMailCommand;
 use JSantos\Command\CreateRepositoryCommand;
+use JSantos\Command\RegisterControllerCommand;
+use JSantos\Command\RegisterTwigCommand;
 
 $console = new Application();
 //NEW COMMAND
@@ -19,6 +21,8 @@ $console->add(new ViewsCommand());
 $console->add(new RegisterImapCommand());
 $console->add(new RegisterMailCommand());
 $console->add(new CreateRepositoryCommand());
+$console->add(new RegisterControllerCommand());
+$console->add(new RegisterTwigCommand());
 
 //The End Command
 $console->run();

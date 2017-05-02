@@ -4,7 +4,6 @@
     "license": "MIT",
     "homepage": "http://jsmaker.com.br",
     "support": {
-        "issues": "",
         "source": "https://github.com/jacsonsantos/gugaio"
     },
     "keywords": ["gugaio", "framework", "api", "orm", "jwt"],
