@@ -12,6 +12,7 @@ use JSantos\Command\CreateRepositoryCommand;
 use JSantos\Command\RegisterControllerCommand;
 use JSantos\Command\RegisterTwigCommand;
 use JSantos\Command\RegisterCommandCommand;
+use JSantos\Command\CreateRouterCommand;
 
 $console = new Application();
 //NEW COMMAND
@@ -25,6 +26,8 @@ $console->add(new CreateRepositoryCommand());
 $console->add(new RegisterControllerCommand());
 $console->add(new RegisterTwigCommand());
 $console->add(new RegisterCommandCommand());
+$console->add(new CreateRouterCommand());
+
 //The End Command
 require(__DIR__.'/../config/command.php');
 $console->run();
