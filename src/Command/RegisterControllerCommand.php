@@ -21,7 +21,7 @@ class RegisterControllerCommand extends Command
     {
         $this->setName('register:controller')
              ->setDescription('Register a new service Controller')
-             ->setHelp('To create a new Controller use: php gugaio register:controller MyController --name=my')
+             ->setHelp('To register a new Controller use: php gugaio register:controller MyController --name=my')
              ->addArgument('controller', InputArgument::REQUIRED, 'The name of the Controller.')
             ->addOption('name',null,InputOption::VALUE_REQUIRED,'The name of the Service Controller');
     }
