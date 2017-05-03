@@ -40,7 +40,7 @@ class CreateRouterCommand extends Command
         $file = 'Router';
 
         $name = $group ?? 'router';
-        $nameRouter = $group ?? '';
+        $nameRouter = $group ? '/'.$group : '';
 
         $groupContent = "\n".'$app->mount($app[\'api_version\']'.$nameRouter.', function ($'.$name.') use ($app) {';
 
