@@ -22,7 +22,10 @@ O ORM utilizado no Gugaiô é o [Eloquent](https://github.com/illuminate/databas
 ## Iniciando
 ```
 git clone https://github.com/jacsonsantos/gugaio.git
+cd gugaio
+composer install
 ```
+
 ## Configurando
 Primeiro execute o seguinte comando:
 ```
