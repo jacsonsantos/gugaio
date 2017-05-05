@@ -1,3 +1,4 @@
+![gugaio](http://oi63.tinypic.com/ab1en7.jpg)
 # Gugaiô - Framework
 O Gugaiô é um framework PHP, desenvolvido com Silex e outros componentes, o mesmo já tem disponivel o ORM Eloquent, assim facilitando a manipulado de dados.
 O Gugaiô foi feito para facilitar o desenvolvimento de APIs, pois o mesmo já vem com autenticação JWT, assim aumentando a segunça a cada requisição.
@@ -21,7 +22,10 @@ O ORM utilizado no Gugaiô é o [Eloquent](https://github.com/illuminate/databas
 ## Iniciando
 ```
 git clone https://github.com/jacsonsantos/gugaio.git
+cd gugaio
+composer install
 ```
+
 ## Configurando
 Primeiro execute o seguinte comando:
 ```
@@ -151,7 +155,6 @@ $app->mount('/users', function ($users) use ($app) {
     $users->get('/{id}', 'user:index');
 });
 ```
-
 #### RouterAuth
 O arquivo *RouterAuth.php* fica todas as rotas com validação de Token por requisição.<br>
 **Como adicionar uma nova Rota** <br>
@@ -170,7 +173,74 @@ $auth->post('/users', 'user:create');
 $auth->put('/users', 'user:update');
 $auth->delete('/users', 'user:delete');
 ```
-
+### Criando Rotas por Comandos
+Com *make:router* você pode criar um grupo de rotas para o serviço de um Controller<br>
+*--service* recebe o nome do serviço registrado para seu Controller.<br>
+<br>**Exemplo:**
+```
+php gugaio make:router product --service=product
+```
+**Resultado:**<br>
+Em: /src/Router/Router.php
+```php
+$app->mount($app['api_version'], function ($router) use ($app) {
+	$router->get('/product', 'product:read');
+	$router->get('/product/{id}', 'product:get');
+	$router->post('/product', 'product:create');
+	$router->put('/product', 'product:update');
+	$router->delete('/product/{id}', 'product:delete');
+});
+```
+Você tambem pode passar o nome do grupo de rotas, usando *--group*.
+```
+php gugaio make:router product --service=product --group=products
+```
+**Resultado:**<br>
+Em: /src/Router/Router.php
+```php
+$app->mount($app['api_version'].'/products', function ($products) use ($app) {
+    $products->get('/product', 'product:read');
+    $products->get('/product/{id}', 'product:get');
+    $products->post('/product', 'product:create');
+    $products->put('/product', 'product:update');
+    $products->delete('/product/{id}', 'product:delete');
+});
+```
+Para criar apenas um rota simples com um metodo HTTP, use:
+```
+php gugaio make:router product --method=get
+```
+*Resultado:*<br>
+Em /src/Router/Router.php
+```php
+$app->get($app['api_version'].'/product', function() use ($app) {
+ 
+});
+```
+**Para Criar Rotas com Autenticação JWT use --auth=true:**
+```
+php gugaio make:router product --service=product --auth=true
+```
+Resultado:<br>
+Em: /src/Router/RouterAuth.php
+```php
+    $auth->get('/product', 'product:read');
+    $auth->get('/product/{id}', 'product:get');
+    $auth->post('/product', 'product:create');
+    $auth->put('/product', 'product:update');
+    $auth->delete('/product/{id}', 'product:delete');
+```
+**Rotas simple com JWT**
+```
+php gugaio make:router product --method=post --auth=true
+```
+Resultado:<br>
+Em: /src/Router/RouterAuth.php
+```php
+    $auth->post($app['api_version'].'/product', function() use ($app) {
+    
+    });
+```
 ## Model
 Para Trabalhar com Model no Gugaiô é muito facil, o mesmo possui Eloquent ORM.<br>
 Para criar um novo Model use:
@@ -233,6 +303,7 @@ Você pode trabalhar com o Controller como um serviço, mas primeiro deve regist
  * **php gugaio make:model** - Cria um novo *Model*.
  * **php gugaio make:repo** - Cria um novo *File Repository* com *CRUD* pronto.
  * **php gugaio make:view** - Cria o diretorio *Views* dentro de *src* para trabalhar com views do Twig.
+ * **php gugaio make:router** - Cria rotas para sua aplicação com ou sem Auth JWT.
  #### register
  * **php gugaio register:controller** - Registra seu Controller como serviço, use *--name* para definir o nome do serviço.
  * **php gugaio register:imap** - Registra o serviço para recebimento de e-mails.
