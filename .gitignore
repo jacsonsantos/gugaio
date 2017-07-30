@@ -1,3 +1,5 @@
 vendor/
 .idea/
 config.yml
+app/Storage/Logs/access.log
+app/Storage/Cache/*

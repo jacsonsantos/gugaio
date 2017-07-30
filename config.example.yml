@@ -26,10 +26,10 @@ USER:
     PASSWORD: ''
 
 DB:
-    DRIVE: 'mysql'
+    DRIVE: 'pgsql'
     HOST: 127.0.0.1
     DBNAME: ''
-    PORT: 3306
+    PORT: 5432
     USERNAME: ''
     PASSWORD: ''
     CHARSET: 'utf8'

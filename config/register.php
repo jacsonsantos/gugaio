@@ -10,4 +10,9 @@ $app->register(new JSantos\Provider\ControllerServiceProvider());
 $app->register(new JSantos\Provider\JWTServiceProvider());
 $app->register(new JSantos\Provider\ConnectionServiceProvider());
 $app->register(new JSantos\Provider\DataBaseServiceProvider());
+$app->register(new JSantos\Provider\EventServiceProvider());
+$app->register(new Silex\Provider\MonologServiceProvider(), array(
+    'monolog.logfile' => __DIR__ . '/../app/Storage/Logs/access.log',
+));
+require_once "silex_service.php";
 //New Register

@@ -1,5 +1,5 @@
 ![gugaio](http://oi63.tinypic.com/ab1en7.jpg)
-# Gugaiô - Framework
+# Gugaiô - Framework | 2 (Desenvolvimento)
 O Gugaiô é um framework PHP, desenvolvido com Silex e outros componentes, o mesmo já tem disponivel o ORM Eloquent, assim facilitando a manipulado de dados.
 O Gugaiô foi feito para facilitar o desenvolvimento de APIs, pois o mesmo já vem com autenticação JWT, assim aumentando a segunça a cada requisição.
 
@@ -14,9 +14,14 @@ O ORM utilizado no Gugaiô é o [Eloquent](https://github.com/illuminate/databas
 * Email
 * Banco de Dados
 * Rotas
+* ACL
 * Model
 * Controller
 * Views
+* Storage
+* Event
+* Service
+* Module
 * Comandos gugaio
 
 ## Iniciando
@@ -77,7 +82,7 @@ php gugaio register:mailer
 ```
 Instale o SwiftMailer antes de usar o serviço *mailer*
 ```
-composer require swiftmailer/swiftmailer
+composer require swiftmailer/swiftmailer 5.4
 ```
 <br>Como enviar e-mails:
 ```php

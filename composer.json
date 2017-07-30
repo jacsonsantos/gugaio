@@ -6,7 +6,7 @@
     "support": {
         "source": "https://github.com/jacsonsantos/gugaio"
     },
-    "keywords": ["gugaio", "framework", "api", "orm", "jwt"],
+    "keywords": ["gugaio", "framework", "api", "orm", "jwt","module","acl"],
     "authors": [
         {
             "name": "Jacson Santos",
@@ -25,7 +25,7 @@
     },
     "autoload":{
         "psr-4":{
-            "JSantos\\":"src/"
+            "JSantos\\":"app/"
         }
     },
     "config": {

@@ -1,0 +1,4 @@
+<?php
+/**
+ * Register Services Silex
+ */

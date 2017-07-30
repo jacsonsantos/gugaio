@@ -28,6 +28,7 @@ class RegisterTwigCommand extends Command
 
         $content = "\n".'$app->register(new Silex\Provider\TwigServiceProvider(), array('.
                             "\n\t".'\'twig.path\' => __DIR__.\'/../src/Views\','.
+                            "\n\t".'\'twig.options\' => [\'cache\'=> $app[\'debug\'] ? false : __DIR__.\'/../app/Storage/Cache\']'.
                         "\n".'));';
 
         if(file_exists($this->path.'register.php'))
