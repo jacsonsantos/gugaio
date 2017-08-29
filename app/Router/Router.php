@@ -1,5 +1,7 @@
 <?php
 $app->mount('/', function ($router) use ($app) {
-    $router->get('/', 'home:index');
+    $router->get('/', function (){
+        return "index";
+    });
 
 });
